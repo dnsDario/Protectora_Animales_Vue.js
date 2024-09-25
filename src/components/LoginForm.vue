@@ -1,7 +1,3 @@
-<script>
-
-</script>
-
 <template>
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
     <img class="mx-auto h-48 w-48" src="https://www.huellascallejeras.com/wp-content/uploads/2020/06/logoHuellas3.png"
@@ -10,17 +6,17 @@
     </h2>
   </div>
   <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form class="space-y-4" action="#" method="POST">
+    <form class="space-y-4" @submit='login'>
       <div>
         <div class="mt-1">
-          <input id="email" name="email" type="email" autocomplete="email" required=""
+          <input id="email" name="email" type="email" autocomplete="email" required="" v-model="user.email"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             placeholder="Email" />
         </div>
       </div>
       <div>
         <div class="mt-1">
-          <input id="password" name="password" type="password" autocomplete="current-password" required=""
+          <input id="password" name="password" type="password" autocomplete="current-password" required="" v-model="user.password"
             class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             placeholder="Contraseña" />
         </div>
@@ -47,3 +43,25 @@
   </div>
 
 </template>
+
+<script setup>
+import { useRouter } from "vue-router";
+import store from "../store/index.js";
+
+const router = useRouter()
+const user = {
+  email: '',
+  password: '',
+  remember: false
+}
+
+function login(ev){
+  ev.preventDefault();
+  store.dispatch('login', user) /* Esta línea despacha una acción de register al almacén Vuex, pasando el objeto user como carga útil. */
+  .then (() => router.push({
+    name: 'Dashboard'
+  }))
+  /* La función de devolución de llamada utiliza el método `router.push` para navegar al usuario a la ruta `Dashboard`. */
+}
+
+</script>

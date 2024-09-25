@@ -1,9 +1,9 @@
 
 <template>
     <div class="animal-card">
-      <h2>{{ animal.name }}</h2>
-      <p>Tipo: {{ animal.type }}</p>
-      <p>Edad: {{ animal.age }}</p>
+      <h2>{{ animal.nombre }}</h2>
+      <p>Tipo: {{ animal.tipo }}</p>
+      <p>Raza: {{ animal.raza }}</p>
     </div>
   </template>
   

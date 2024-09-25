@@ -1,5 +1,5 @@
 <template>
-    <PageComponent title="DashboardPage"> Content goes here</PageComponent>
+    <PageComponent title="Huellas Callejeras"> Content goes here</PageComponent>
 </template>
 
 <script setup>
